@@ -220,12 +220,6 @@ public class Linkedin {
                 .build();
         HttpClient client = HttpClient.newHttpClient();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(content);
-        System.out.println(descriptionText);
-        System.out.println(asset);
-        System.out.println(titleText);
-        System.out.println(response.body());
-
         return response.statusCode()==201;
     }
 

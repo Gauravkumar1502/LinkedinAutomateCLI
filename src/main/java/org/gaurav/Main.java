@@ -39,6 +39,22 @@ public class Main {
             System.exit(1);
         }
 
+        /*
+        -gt "i create a Linkedin Automate CLI application in view Java code to automate the posts on linkedin. I create this app with the help of Linkedin API and chatGpt integration.
+        this cli app has all these below commands to interact the application
+            - To post text content only:
+                linkedin -t 'Hello, this is my text-only post!'
+            - To post an article URL with text, description text, and title text:
+                linkedin -t 'Check out this interesting article!' -a [Article_url]
+                linkedin -t 'Check out this interesting article! With description text and title text' -a [Article_url] -dt 'This article provides some great insights' -tt 'Interesting Article'
+            - To post an image with description text and title text:
+                linkedin -t 'Here's an image I wanted to share!' -i [Image_path]
+                linkedin -t 'Here's an image I wanted to share! With description text and title text' -i [Image_path] -dt 'This image shows a beautiful sunset' -tt 'Beautiful'
+
+        write a engaging and interesting Linkedin post to express the happiness of doing this sucessfully and make announce?" -a "https://github.com/Gauravkumar1502/LinkedinAutomateCLI"
+        -dt "I create a Linkedin Automate CLI application in Java to automate the posts on linkedin with the help of Linkedin API and chatGpt integration.
+        -tt "Linkedin Automate CLI"
+         */
         new Main().parseArgs(args);
     }
     
