@@ -4,15 +4,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.gaurav.linkedin.Linkedin;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class ChatGpt {
@@ -44,7 +42,7 @@ public class ChatGpt {
         this.role = role;
         System.out.println("Model: " + model + " Role: " + role.getValue());
         System.out.println("Prompt: " + this.prompt);
-        properties.load(Linkedin.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(new FileInputStream("src/main/resources/application.properties"));
         this.API_KEY = properties.getProperty("chatGPT.api-key");
     }
     private String makeInputString(){

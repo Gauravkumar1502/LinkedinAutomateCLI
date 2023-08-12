@@ -4,7 +4,6 @@ import org.gaurav.chatGpt.ChatGpt;
 import org.gaurav.linkedin.Linkedin;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -77,6 +76,36 @@ public class Main {
                 case "-i" -> imagePath = args[++i];
                 case "-dt" -> descriptionText = args[++i];
                 case "-tt" -> titleText = args[++i];
+                case "-h" -> {
+                    System.out.println("""
+                            usage:
+                                linkedin [-t TEXT] [-a ARTICLE_URL] [-i IMAGE_PATH] [-dt DESCRIPTION_TEXT] [-tt TITLE_TEXT]
+                            
+                            Command line tool for posting on LinkedIn
+                            
+                            optional arguments:
+                                -h: show this help message and exit
+                                -t <Content | Text>: This flag specifies the text content of the post. It is required for all LinkedIn commands.
+                                -gt <ChatGPT_prompt>: This flag specifies the prompt for the ChatGPT model. This generates text content for the post.
+                                -a <Article_url>: This flag specifies the URL of an article to include in the post. It is optional and can be used with the -t flag for LinkedIn posts that include an url.
+                                -i <Image_path>: This flag specifies the path to an image file to include in the post. It is optional and can be used with the -t flag to post image with text.
+                                -dt <Description_text>: This flag specifies the description text for the post. It is optional and can be used with the -a or -i flags to provide additional information about the article or image.
+                                                        If no value is provided, it will default to an empty string ("").
+                                -tt <Title_text>: This flag specifies the title text for the post. It is optional and can be used with the -a or -i flags to provide a title for the article or image.
+                                                        If no value is provided, it will default to an empty string ("").
+                            
+                            Examples:
+                                - To post text content only:
+                                    linkedin -t "Hello, this is my text-only post!"
+                                - To post an article URL with text, description text, and title text:
+                                    linkedin -t "Check out this interesting article!" -a https://www.example.com/article
+                                    linkedin -t "Check out this interesting article!" -a https://www.example.com/article -dt "This article provides some great insights" -tt "Interesting Article"
+                                - To post an image with description text and title text:
+                                    linkedin -t "Here's an image I wanted to share!" -i /path/to/image.jpg
+                                    linkedin -t "Here's an image I wanted to share!" -i /path/to/image.jpg -dt "This image shows a beautiful sunset" -tt "Beautiful Sunset"
+                            """);
+                    System.exit(0);
+                }
                 default -> {
                     System.err.println("Invalid argument: " + args[i]);
                     System.exit(1);

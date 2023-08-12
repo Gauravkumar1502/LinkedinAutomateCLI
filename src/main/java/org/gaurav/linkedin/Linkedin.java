@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -11,16 +12,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.Properties;
 
 public class Linkedin {
-//    get key from application.properties file
     Properties properties = new Properties();
     private final String API_KEY;
     public UserInfo userInfo;
     public Linkedin() throws IOException, InterruptedException {
-        properties.load(Linkedin.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(new FileInputStream("src/main/resources/application.properties"));
         this.API_KEY = properties.getProperty("linkedIn.api-key");
         this.userInfo = getUserInfo();
     }
